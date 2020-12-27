@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Values.ingress.name }}
+  labels:
+    {{- include "alexa-skill.labels" . | nindent 4 }}
+  annotations:
+    # Target URI where the traffic must be redirected
+    # More info: https://github.com/kubernetes/ingress-nginx/blob/master/docs/examples/rewrite/README.md
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    # Uncomment the below to only allow traffic from this domain and route based on it
+    # - host: my-host # your domain name with A record pointing to the nginx-ingress-controller IP
+    - http:
+        paths:
+        - path: / # Everything on this path will be redirected to the rewrite-target
+          backend:
+            serviceName: {{ include "alexa-skill.fullname" . }} # the exposed svc name and port
+            servicePort: {{ .Values.ingress.port }}

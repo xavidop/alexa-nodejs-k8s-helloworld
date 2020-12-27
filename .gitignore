@@ -1,0 +1,20 @@
+node_modules/
+package-lock.json
+.DS_Store
+test-results.xml
+eslint.xml
+lambda/src/package.json
+mochawesome-report/
+.nyc_output/
+*.lcov
+test_output/
+*.log
+build.zip
+report.html
+*.html
+
+# Ignore DevSpace cache and log folder
+.devspace/
+
+charts/
+requirements.lock

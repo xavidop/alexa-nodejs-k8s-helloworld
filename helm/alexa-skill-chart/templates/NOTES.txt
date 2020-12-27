@@ -1,0 +1,3 @@
+Try to connect with a REST API Client:
+
+  http://127.0.0.1:3000

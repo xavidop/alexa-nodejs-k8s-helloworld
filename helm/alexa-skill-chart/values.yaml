@@ -1,0 +1,38 @@
+# Default values for alexa-skill.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image: 
+  repo: xavidop
+  name: alexa-skill-nodejs-express
+  tag: latest
+pullPolicy: Always
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  port: 3000
+  NodePort: 3000
+
+ingress:
+  enabled: true
+  name: alexa-skill-ingress
+  port: 3000
+
+resources:
+  limits:
+    cpu: 50m
+    memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
