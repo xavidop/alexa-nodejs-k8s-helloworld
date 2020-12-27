@@ -28,6 +28,23 @@ spec:
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: DB_TYPE
+              value: {{ .Values.mongodb.type }}
+            - name: DB_HOST
+              {{ if eq .Values.mongodb.type "provided" }}
+              value: {{ include "alexa-skill.fullname" . }}-{{ .Values.mongodb.service.name }}
+              {{ else }}
+              value: {{ .Values.mongodb.service.name }}
+              {{ end }}
+            - name: DB_PORT
+              value: "{{ .Values.mongodb.service.port }}"
+            - name: DB_USER
+              value: {{ .Values.mongodb.auth.username }}
+            - name: DB_PASSWORD
+              value: {{ .Values.mongodb.auth.password }}
+            - name: DB_DATABASE
+              value: {{ .Values.mongodb.auth.database }}    
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

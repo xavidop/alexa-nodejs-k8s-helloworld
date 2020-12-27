@@ -31,6 +31,30 @@ resources:
     cpu: 50m
     memory: 128Mi
 
+# Mongo provided conneciton
+mongodb:
+  enabled: true
+  type: provided # could be atlas or provided
+  auth:
+    username: root
+    password: root
+    database: alexa
+    rootPassword: root
+  service:
+    name: mongodb
+    port: 27017
+
+# Atlas connection
+# mongodb:
+#   enabled: false
+#   type: atlas # could be atlas or provided
+#   auth:
+#     username: root
+#     password: root
+#     database: alexa
+#   service:
+#     name: cluster0.qlqga.mongodb.net
+
 nodeSelector: {}
 
 tolerations: []

@@ -8,7 +8,12 @@ module.exports = {
     canHandle(handlerInput) {
       return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
-    handle(handlerInput) {
+    async handle(handlerInput) {
+
+      // Test MongoDB connection works
+      const { attributesManager } = handlerInput;
+      await attributesManager.getPersistentAttributes();
+
       const speakOutput = i18n.t('WELCOME_MSG');
 
       return handlerInput.responseBuilder

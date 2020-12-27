@@ -22,14 +22,33 @@ let { IntentReflectorHandler } = require('./intents/intentReflectorHandler');
 let { ErrorHandler } = require('./errors/errorHandler');
 let { LocalisationRequestInterceptor } = require('./interceptors/localisationRequestInterceptor');
 
+const connOpts = {
+  host: process.env.DB_HOST ? process.env.DB_HOST : 'cluster0.qlqga.mongodb.net',
+  connectionType: process.env.DB_TYPE !== 'atlas' ? 'mongodb' : 'mongodb+srv',
+  user: process.env.DB_USER ? process.env.DB_USER : 'root',
+  port: process.env.DB_PORT ? process.env.DB_PORT : '27017',
+  password: process.env.DB_PASSWORD ? process.env.DB_PASSWORD : 'root',
+  database: process.env.DB_DATABASE ? '/' + process.env.DB_DATABASE : '',
+};
+
+let uri = '';
+if (process.env.DB_TYPE === 'atlas'){
+  uri = `${connOpts.connectionType}://${connOpts.user}:${connOpts.password}@${connOpts.host}${connOpts.database}`;
+} else {
+  // eslint-disable-next-line max-len
+  uri = `${connOpts.connectionType}://${connOpts.user}:${connOpts.password}@${connOpts.host}:${connOpts.port}${connOpts.database}`;
+}
+
 let options = {
   collectionName: 'alexa',
-  mongoURI: 'mongodb+srv://root:root@cluster0.qlqga.mongodb.net',
+  mongoURI: uri,
   partitionKeyGenerator: (requestEnvelope) => {
     const userId = Alexa.getUserId(requestEnvelope);
     return userId.substr(userId.lastIndexOf('.') + 1);
   },
 };
+
+console.log('Connection to: ' + options.mongoURI);
 
 let adapter = new MongoDBPersistenceAdapter(options);
 

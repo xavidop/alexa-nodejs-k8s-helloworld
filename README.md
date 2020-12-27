@@ -14,10 +14,26 @@ https://hub.docker.com/repository/docker/xavidop/alexa-skill-nodejs-express/gene
 kind create cluster --config cluster.yaml
 
 kubectl cluster-info --context kind-kind
+kubectl create namespace alexa-skill
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml
 
 # Helm
-❯ helm install alexa-skill helm/alexa-skill-chart/ --namespace alexa-skill
 
+## Add Helm repos
+helm repo add bitnami https://charts.bitnami.com/bitnami
+Mongo chart: https://github.com/bitnami/charts/tree/master/bitnami/mongodb
+
+## Install
+helm install alexa-skill helm/alexa-skill-chart/ --namespace alexa-skill
+
+## Uninstall
 helm uninstall alexa-skill --namespace alexa-skill
+
+# Connect to pod
+
+kubectl exec --stdin --tty alexa-skill-fc6cdd855-ldfvg -n alexa-skill -- /bin/sh
+
+# Mongo Connection
+
+mongo mongodb://root:root@alexa-skill-mongodb:27017/alexa
