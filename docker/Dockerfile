@@ -1,7 +1,6 @@
 FROM node:12.18-alpine
-ENV NODE_ENV=production
-WORKDIR /usr/src/app
+WORKDIR /usr/src
 COPY ./app/ .
-RUN npm install --production
+RUN npm install
 EXPOSE 3000
-CMD ["node", "index.js"]
+ENTRYPOINT ["npm", "start"]

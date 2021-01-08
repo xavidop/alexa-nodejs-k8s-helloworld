@@ -1,0 +1,34 @@
+version: v1beta9
+
+images:
+  app:
+    image: xavidop/alexa-skill-nodejs-express
+    dockerfile: ./docker/Dockerfile
+    preferSyncOverRebuild: true
+    entrypoint:
+    - npm
+    - run
+    - dev
+
+deployments:
+- name: alexa-skill
+  helm:
+    chart:
+      name: ./helm/alexa-skill-chart
+    values:
+      image:
+        tag: tag(xavidop/alexa-skill-nodejs-express)
+
+dev:
+  open:
+  - url: http://localhost:3000
+  autoReload:
+    paths:
+    - ./app/package.json
+    - ./docker/Dockerfile
+  sync:
+  - imageName: app
+    disableDownload: true
+    localSubPath: ./app
+    excludePaths:
+    - ./node_modules
