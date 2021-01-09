@@ -22,6 +22,11 @@ kubectl create namespace alexa-skill
 ## Install NGINX
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml
 
+## Devespace
+devspace use namespace alexa-skill
+devspace dev
+devspace purge -d alexa-skill
+
 # Helm
 
 ## Add Helm repos
@@ -33,6 +38,24 @@ helm install alexa-skill helm/alexa-skill-chart/ --namespace alexa-skill
 
 ## Uninstall
 helm uninstall alexa-skill --namespace alexa-skill
+
+# Terraform
+
+terraform init
+terraform plan
+terraform appyly
+terraform destroy
+
+## EKS
+https://learnk8s.io/terraform-eks
+https://github.com/k-mitevski/terraform-k8s/tree/master/04_terraform_helm_provider
+
+## AKS
+https://learnk8s.io/blog/get-start-terraform-aks
+https://github.com/learnk8s/terraform-aks/tree/master/03-aks-helm
+az account list
+az ad sp create-for-rbac --role="Contributor"  --scopes="/subscriptions/YOUR_ID"
+
 
 # Troubleshooting
 

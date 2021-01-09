@@ -104,6 +104,6 @@ resource "helm_release" "ingress" {
 
 resource "helm_release" "alexa-skill" {
   name       = "alexa-skill"
-  chart      = "../helm/alexa-skill-chart"
+  chart      = "../../helm/alexa-skill-chart"
   depends_on = [helm_release.ingress]
 }
