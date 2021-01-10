@@ -2,12 +2,12 @@ provider "aws" {
   region = "eu-central-1"
 }
 
-data "aws_eks_cluster" "cluster" {
-  name = module.eks.cluster_id
-}
-
-data "aws_eks_cluster_auth" "cluster" {
-  name = module.eks.cluster_id
+provider "helm" {
+  kubernetes {
+    host                   = data.aws_eks_cluster.cluster.endpoint
+    cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
+    token                  = data.aws_eks_cluster_auth.cluster.token
+  }
 }
 
 provider "kubernetes" {
@@ -15,6 +15,14 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
   token                  = data.aws_eks_cluster_auth.cluster.token
   load_config_file       = false
+}
+
+data "aws_eks_cluster" "cluster" {
+  name = module.eks.cluster_id
+}
+
+data "aws_eks_cluster_auth" "cluster" {
+  name = module.eks.cluster_id
 }
 
 data "aws_availability_zones" "available" {
@@ -81,14 +89,6 @@ resource "aws_iam_policy" "worker_policy" {
   description = "Worker policy for the ALB Ingress"
 
   policy = file("iam-policy.json")
-}
-
-provider "helm" {
-  kubernetes {
-    host                   = data.aws_eks_cluster.cluster.endpoint
-    cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
-    token                  = data.aws_eks_cluster_auth.cluster.token
-  }
 }
 
 resource "helm_release" "ingress" {
