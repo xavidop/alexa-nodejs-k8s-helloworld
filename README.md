@@ -1,83 +1,94 @@
-# Docker
+# Alexa Running in Kubernetes
 
-## Build
-docker build -t xavidop/alexa-skill-nodejs-express:latest -f docker/Dockerfile .
+<!-- TOC -->
 
-docker push xavidop/alexa-skill-nodejs-express:latest
+- [Alexa Running in Kubernetes](#alexa-running-in-kubernetes)
+  - [1. Alexa Skill as a web server](#1-alexa-skill-as-a-web-server)
+  - [2. MongoDB persistence adapter](#2-mongodb-persistence-adapter)
+  - [3. Dockerizing the Alexa Skill](#3-dockerizing-the-alexa-skill)
+  - [4. Kubernetes objects of the Alexa Skill](#4-kubernetes-objects-of-the-alexa-skill)
+  - [5. Local development](#5-local-development)
+  - [6. Helm chart](#6-helm-chart)
+  - [7. Terraform.](#7-terraform)
+    - [7.1. Deploying the Alexa Skill on AWS Elastic Kubernetes Services](#71-deploying-the-alexa-skill-on-aws-elastic-kubernetes-services)
+    - [7.2. Deploying the Alexa Skill on Azure Kubernetes Services](#72-deploying-the-alexa-skill-on-azure-kubernetes-services)
+    - [7.3. Deploying the Alexa Skill on Google Kubernetes Engine](#73-deploying-the-alexa-skill-on-google-kubernetes-engine)
 
-## Run
-docker run -i -p 3000:3000 -t xavidop/alexa-skill-nodejs-express:latest
+<!-- /TOC -->
 
-https://hub.docker.com/repository/docker/xavidop/alexa-skill-nodejs-express/general
+In this repository you will find all the resources needed to transform or create an Alexa Skill on Kubernetes.
+These are the two possible options you can use for running your Alexa Skill on kubernetes:
+
+**1. Using Mongo Atlas Cloud Schema**
+![image](img/atlas.png)
+
+**2. Using Provided Mongo Schema**
+![image](img/provided.png)
+
+Those multiple options are supported by this implementation.
+
+These are the main folders of the project:
+
+```bash
+    ├───.vscode
+    ├───alexa-skill
+    ├───app
+    ├───docker
+    ├───helm
+    └───terraform
+        ├───eks
+        ├───aks
+        └───gke
+```
+
+* **.vscode:** launch preferences to run locally your Skill for local testing.
+* **alexa-skill:** this folder contains all the metadata of the Alexa Skill such as the interaction model, assets, Skill manifest, etc. In this folder you will be able to run all the `ask cli` commands.
+* **app:** the backend of the Alexa Skill a NodeJS app using Express.
+* **docker:** where you can find the Dockerfile of the Alexa Skill backend as a NodeJS app.
+* **helm:** the helm chart of the Alexa Skill ready to be deployed on any Kubernetes Cluster.
+* **terraform:** Terraform files per different kind of private clouds.
+  * **eks:** All the files needed to deploy an Alexa Skill and a Kubernetes Cluster on AWS Elastic Kubernetes Service.
+  * **aks:** All the files needed to deploy an Alexa Skill and a Kubernetes Cluster on Azure Kubernetes Service.
+  * **gke:** All the files needed to deploy an Alexa Skill and a Kubernetes Cluster on Google Kubernetes Engine.
 
 
-# Kubernetes
+Let's explaing all the steps required to create an Alexa Skill and deploy it on a Kubernetes cluster.
+In each step you will find all the pre-requisites needed for that step.
 
-## Kind configuration
-kind create cluster --config cluster.yaml
+## 1. Alexa Skill as a web server
 
-kubectl cluster-info --context kind-kind
-kubectl create namespace alexa-skill
+How to create an Alexa Skill as a NodeJS app using Express. Check the full explanation [here](docs/WEBSERVER.md).
 
-## Install NGINX
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml
+## 2. MongoDB persistence adapter
 
-## Devespace
-devspace use namespace alexa-skill
-devspace dev
-devspace purge -d alexa-skill
+The test job will execute the unit tests. Check the full explanation [here](https://github.com/xavidop/ask-sdk-mongodb-persistence-adapter).
 
-# Helm
+## 3. Dockerizing the Alexa Skill
 
-## Add Helm repos
-helm repo add bitnami https://charts.bitnami.com/bitnami
-Mongo chart: https://github.com/bitnami/charts/tree/master/bitnami/mongodb
+The test job will execute the unit tests. Check the full explanation [here](docs/DOCKER.md).
 
-## Install
-helm install alexa-skill helm/alexa-skill-chart/ --namespace alexa-skill
+## 4. Kubernetes objects of the Alexa Skill
 
-## Uninstall
-helm uninstall alexa-skill --namespace alexa-skill
+The test job will execute the unit tests. Check the full explanation [here](docs/KUBERNETES.md).
 
-# Terraform
+## 5. Local development
 
-terraform init
-terraform plan
-terraform appyly
-terraform destroy
+The test job will execute the unit tests. Check the full explanation [here](docs/LOCAL_DEVELOPMENT.md).
 
-## EKS
-https://learnk8s.io/terraform-eks
-https://github.com/k-mitevski/terraform-k8s/tree/master/04_terraform_helm_provider
+## 6. Helm chart
 
-## AKS
-https://learnk8s.io/blog/get-start-terraform-aks
-https://github.com/learnk8s/terraform-aks/tree/master/03-aks-helm
-az account list
-az ad sp create-for-rbac --role="Contributor"  --scopes="/subscriptions/YOUR_ID"
+The test job will execute the unit tests. Check the full explanation [here](docs/HELM.md).
 
-## GKE
-https://learn.hashicorp.com/tutorials/terraform/gke
-https://github.com/GoogleCloudPlatform/terraform-google-examples/tree/master/example-gke-k8s-helm
-https://github.com/hashicorp/learn-terraform-provision-gke-cluster
-gcloud init
-gcloud projects create alexa-k8s
-gcloud auth application-default login
-gcloud config set project alexa-k8s
-gcloud config get-value project
+## 7. Terraform.
 
-# Troubleshooting
+### 7.1. Deploying the Alexa Skill on AWS Elastic Kubernetes Services
 
-## Connect to pod
+The test job will execute the unit tests. Check the full explanation [here](docs/TERRAFORM_EKS.md).
 
-kubectl exec --stdin --tty alexa-skill-fc6cdd855-ldfvg -n alexa-skill -- /bin/sh
+### 7.2. Deploying the Alexa Skill on Azure Kubernetes Services
 
-## Mongo Connection
+The test job will execute the unit tests. Check the full explanation [here](docs/TERRAFORM_AKS.md).
 
-mongo mongodb://root:root@alexa-skill-mongodb:27017/alexa
+### 7.3. Deploying the Alexa Skill on Google Kubernetes Engine
 
-# Mongo Atlas Schema
-![image](docs/atlas.png)
-
-# Provided Mongo Schema
-![image](docs/provided.png)
+The test job will execute the unit tests. Check the full explanation [here](docs/TERRAFORM_GKE.md).

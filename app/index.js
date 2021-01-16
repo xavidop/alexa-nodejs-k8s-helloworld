@@ -24,7 +24,6 @@ let { LocalisationRequestInterceptor } = require('./interceptors/localisationReq
 
 const connOpts = {
   host: process.env.DB_HOST ? process.env.DB_HOST : 'cluster0.qlqga.mongodb.net',
-  connectionType: process.env.DB_TYPE !== 'atlas' ? 'mongodb' : 'mongodb+srv',
   user: process.env.DB_USER ? process.env.DB_USER : 'root',
   port: process.env.DB_PORT ? process.env.DB_PORT : '27017',
   password: process.env.DB_PASSWORD ? process.env.DB_PASSWORD : 'root',
@@ -33,10 +32,10 @@ const connOpts = {
 
 let uri = '';
 if (process.env.DB_TYPE === 'atlas'){
-  uri = `${connOpts.connectionType}://${connOpts.user}:${connOpts.password}@${connOpts.host}${connOpts.database}`;
+  uri = `mongodb+srv://${connOpts.user}:${connOpts.password}@${connOpts.host}${connOpts.database}`;
 } else {
   // eslint-disable-next-line max-len
-  uri = `${connOpts.connectionType}://${connOpts.user}:${connOpts.password}@${connOpts.host}:${connOpts.port}${connOpts.database}`;
+  uri = `mongodb://${connOpts.user}:${connOpts.password}@${connOpts.host}:${connOpts.port}${connOpts.database}`;
 }
 
 let options = {
