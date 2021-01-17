@@ -73,7 +73,7 @@ Creating all the Kubernetes objects needed to deploy our Alexa Skill on a Kubern
 
 ## 5. Helm chart of the Alexa skill
 
-The test job will execute the unit tests. Check the full explanation [here](docs/HELM.md).
+Creating the Helm Chart with our Alexa Skill + MongoDB. Check the full explanation [here](docs/HELM.md).
 ## 6. Local development
 
 How to develop in a Kubernetes environment. Check the full explanation [here](docs/LOCAL_DEVELOPMENT_DEPLOYMENT.md).
