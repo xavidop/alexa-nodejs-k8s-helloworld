@@ -7,8 +7,8 @@
   - [2. MongoDB persistence adapter](#2-mongodb-persistence-adapter)
   - [3. Dockerizing the Alexa Skill](#3-dockerizing-the-alexa-skill)
   - [4. Kubernetes objects of the Alexa Skill](#4-kubernetes-objects-of-the-alexa-skill)
-  - [5. Local development](#5-local-development)
-  - [6. Helm chart](#6-helm-chart)
+  - [5. Helm chart of the Alexa skill](#5-helm-chart-of-the-alexa-skill)
+  - [6. Local development](#6-local-development)
   - [7. Terraform.](#7-terraform)
     - [7.1. Deploying the Alexa Skill on AWS Elastic Kubernetes Services](#71-deploying-the-alexa-skill-on-aws-elastic-kubernetes-services)
     - [7.2. Deploying the Alexa Skill on Azure Kubernetes Services](#72-deploying-the-alexa-skill-on-azure-kubernetes-services)
@@ -16,7 +16,7 @@
 
 <!-- /TOC -->
 
-In this repository you will find all the resources needed to transform or create an Alexa Skill on Kubernetes.
+In this repository you will find all the resources needed to transform or create an Alexa Skill as an NodeJS Express app ready to run on Kubernetes.
 These are the two possible options you can use for running your Alexa Skill on kubernetes:
 
 **1. Using Mongo Atlas Cloud Schema**
@@ -61,34 +61,33 @@ How to create an Alexa Skill as a NodeJS app using Express. Check the full expla
 
 ## 2. MongoDB persistence adapter
 
-The test job will execute the unit tests. Check the full explanation [here](https://github.com/xavidop/ask-sdk-mongodb-persistence-adapter).
+Usage of the new MongoDB Persistence adapter. Check the full explanation [here](https://github.com/xavidop/ask-sdk-mongodb-persistence-adapter).
 
 ## 3. Dockerizing the Alexa Skill
 
-The test job will execute the unit tests. Check the full explanation [here](docs/DOCKER.md).
+Dockerizing our Alexa Skill backend transformed into a NodeJS Express app. Check the full explanation [here](docs/DOCKER.md).
 
 ## 4. Kubernetes objects of the Alexa Skill
 
-The test job will execute the unit tests. Check the full explanation [here](docs/KUBERNETES.md).
+Creating all the Kubernetes objects needed to deploy our Alexa Skill on a Kubernetes cluster. Check the full explanation [here](docs/KUBERNETES.md).
 
-## 5. Local development
-
-The test job will execute the unit tests. Check the full explanation [here](docs/LOCAL_DEVELOPMENT.md).
-
-## 6. Helm chart
+## 5. Helm chart of the Alexa skill
 
 The test job will execute the unit tests. Check the full explanation [here](docs/HELM.md).
+## 6. Local development
+
+How to develop in a Kubernetes environment. Check the full explanation [here](docs/LOCAL_DEVELOPMENT_DEPLOYMENT.md).
 
 ## 7. Terraform.
 
 ### 7.1. Deploying the Alexa Skill on AWS Elastic Kubernetes Services
 
-The test job will execute the unit tests. Check the full explanation [here](docs/TERRAFORM_EKS.md).
+How to deploy our Alexa skill in EKS. Check the full explanation [here](docs/TERRAFORM_EKS.md).
 
 ### 7.2. Deploying the Alexa Skill on Azure Kubernetes Services
 
-The test job will execute the unit tests. Check the full explanation [here](docs/TERRAFORM_AKS.md).
+How to deploy our Alexa skill in AKS. Check the full explanation [here](docs/TERRAFORM_AKS.md).
 
 ### 7.3. Deploying the Alexa Skill on Google Kubernetes Engine
 
-The test job will execute the unit tests. Check the full explanation [here](docs/TERRAFORM_GKE.md).
+How to deploy our Alexa skill in GKE. Check the full explanation [here](docs/TERRAFORM_GKE.md).
