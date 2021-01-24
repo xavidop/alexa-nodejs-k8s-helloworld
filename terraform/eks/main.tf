@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "eu-central-1"
+  region = local.region
 }
 
 provider "helm" {
@@ -30,6 +30,7 @@ data "aws_availability_zones" "available" {
 
 locals {
   cluster_name = "alexa-cluster"
+  region       = "eu-central-1"
 }
 
 module "vpc" {
