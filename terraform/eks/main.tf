@@ -63,8 +63,8 @@ module "eks" {
   cluster_name    = local.cluster_name
   cluster_version = "1.18"
   subnets         = module.vpc.private_subnets
-  wait_for_cluster_cmd          = "until curl -k -s $ENDPOINT/healthz >/dev/null; do sleep 4; done"
-  wait_for_cluster_interpreter = ["C:/Program Files/Git/bin/sh.exe", "-c"]
+ # wait_for_cluster_cmd          = "until curl -k -s $ENDPOINT/healthz >/dev/null; do sleep 4; done" FOR WINDOWS
+ # wait_for_cluster_interpreter = ["C:/Program Files/Git/bin/sh.exe", "-c"]  FOR WINDOWS
 
   vpc_id = module.vpc.vpc_id
 
