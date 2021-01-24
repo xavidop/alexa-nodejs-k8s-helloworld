@@ -224,6 +224,7 @@ For example, you can test a `LaunchRequest`:
 ![image](../img/aks/aks-request.png)
 ## Destroy the Stack
 
+If we want to remove all the stack created by Terraform, just run:
 ```bash
 terraform destroy
 ```

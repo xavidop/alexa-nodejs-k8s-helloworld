@@ -8,7 +8,7 @@
   - [3. Dockerizing the Alexa Skill](#3-dockerizing-the-alexa-skill)
   - [4. Kubernetes objects of the Alexa Skill](#4-kubernetes-objects-of-the-alexa-skill)
   - [5. Helm chart of the Alexa skill](#5-helm-chart-of-the-alexa-skill)
-  - [6. Local development](#6-local-development)
+  - [6. Local development and Deployment with DevSpace](#6-local-development-and-deployment-with-devspace)
   - [7. Terraform.](#7-terraform)
     - [7.1. Deploying the Alexa Skill on AWS Elastic Kubernetes Services](#71-deploying-the-alexa-skill-on-aws-elastic-kubernetes-services)
     - [7.2. Deploying the Alexa Skill on Azure Kubernetes Services](#72-deploying-the-alexa-skill-on-azure-kubernetes-services)
@@ -74,7 +74,7 @@ Creating all the Kubernetes objects needed to deploy our Alexa Skill on a Kubern
 ## 5. Helm chart of the Alexa skill
 
 Creating the Helm Chart with our Alexa Skill + MongoDB. Check the full explanation [here](docs/HELM.md).
-## 6. Local development
+## 6. Local development and Deployment with DevSpace
 
 How to develop in a Kubernetes environment. Check the full explanation [here](docs/LOCAL_DEVELOPMENT_DEPLOYMENT.md).
 
