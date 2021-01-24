@@ -200,6 +200,9 @@ If we want to remove all the stack created by DevSpace, just run:
 ```bash
 devspace purge -d alexa-skill
 ```
+
+![image](../img/devspace/remove.png)
+
 ## Resources
 * [Official Alexa Skills Kit Node.js SDK](https://www.npmjs.com/package/ask-sdk) - The Official Node.js SDK Documentation
 * [Official Alexa Skills Kit Documentation](https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html) - Official Alexa Skills Kit Documentation
