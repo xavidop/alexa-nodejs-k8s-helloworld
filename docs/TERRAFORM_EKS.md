@@ -204,7 +204,7 @@ And here the Kubernetes Services and the external IP of the `nginx-ingress-contr
 
 I'm sure you already know the famous tool call [Postman](https://www.postman.com/). REST APIs have become the new standard in providing a public and secure interface for your service. Though REST has become ubiquitous, it's not always easy to test. Postman, makes it easier to test and manage HTTP REST APIs. Postman gives us multiple features to import, test and share APIs, which will help you and your team be more productive in the long run.
 
-After run your application you will have an endpoint available at http://localhost:3000. With Postman you can emulate any Alexa Request. 
+After run your application you will have an endpoint available at http://a6ae89bc3ff9745de8bd095000264ff6-1697202105.eu-central-1.elb.amazonaws.com. With Postman you can emulate any Alexa Request. 
 
 For example, you can test a `LaunchRequest`:
 
