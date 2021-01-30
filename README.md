@@ -3,16 +3,16 @@
 <!-- TOC -->
 
 - [Alexa Running in Kubernetes](#alexa-running-in-kubernetes)
-  - [1. Alexa Skill as a web server](#1-alexa-skill-as-a-web-server)
-  - [2. MongoDB persistence adapter](#2-mongodb-persistence-adapter)
-  - [3. Dockerizing the Alexa Skill](#3-dockerizing-the-alexa-skill)
-  - [4. Kubernetes objects of the Alexa Skill](#4-kubernetes-objects-of-the-alexa-skill)
-  - [5. Helm chart of the Alexa skill](#5-helm-chart-of-the-alexa-skill)
-  - [6. Local development and Deployment with DevSpace](#6-local-development-and-deployment-with-devspace)
-  - [7. Terraform.](#7-terraform)
-    - [7.1. Deploying the Alexa Skill on AWS Elastic Kubernetes Services](#71-deploying-the-alexa-skill-on-aws-elastic-kubernetes-services)
-    - [7.2. Deploying the Alexa Skill on Azure Kubernetes Services](#72-deploying-the-alexa-skill-on-azure-kubernetes-services)
-    - [7.3. Deploying the Alexa Skill on Google Kubernetes Engine](#73-deploying-the-alexa-skill-on-google-kubernetes-engine)
+    - [Alexa Skill as a web server](#alexa-skill-as-a-web-server)
+    - [MongoDB persistence adapter](#mongodb-persistence-adapter)
+    - [Dockerizing the Alexa Skill](#dockerizing-the-alexa-skill)
+    - [Kubernetes objects of the Alexa Skill](#kubernetes-objects-of-the-alexa-skill)
+    - [Helm chart of the Alexa skill](#helm-chart-of-the-alexa-skill)
+    - [Local development and Deployment with DevSpace](#local-development-and-deployment-with-devspace)
+    - [Terraform.](#terraform)
+        - [Deploying the Alexa Skill on AWS Elastic Kubernetes Services](#deploying-the-alexa-skill-on-aws-elastic-kubernetes-services)
+        - [Deploying the Alexa Skill on Azure Kubernetes Services](#deploying-the-alexa-skill-on-azure-kubernetes-services)
+        - [Deploying the Alexa Skill on Google Kubernetes Engine](#deploying-the-alexa-skill-on-google-kubernetes-engine)
 
 <!-- /TOC -->
 
@@ -52,7 +52,7 @@ These are the main folders of the project:
   * **gke:** All the files needed to deploy an Alexa Skill and a Kubernetes Cluster on Google Kubernetes Engine.
 
 
-Let's explaing all the steps required to create an Alexa Skill and deploy it on a Kubernetes cluster.
+Let's explain all the steps required to create an Alexa Skill and deploy it on a Kubernetes cluster.
 In each step you will find all the pre-requisites needed for that step.
 
 ## 1. Alexa Skill as a web server

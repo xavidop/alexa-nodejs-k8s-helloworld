@@ -30,7 +30,7 @@ This os how DevSpace works:
 
 ### Benefits
 
-Mentioning hte DevSpace documentation:
+Mentioning the DevSpace documentation:
 DevSpace allows you to store all your workflows in one declarative config file: `devspace.yaml`
 
 * Codify workflow knowledge about building images, deploying your project and its dependencies etc.
@@ -60,7 +60,7 @@ DevSpace is battle tested with many Kubernetes distributions including:
 * Managed Kubernetes clusters in GKE (Google), EKS (AWS), AKS (Azure), DOKS (Digital Ocean)
 * Self-managed Kubernetes clusters (e.g. created with Rancher)
 
-**The most important thing of DevSpace is that DevSpace is cloud agnostic. That means that it dependends on your Kubernetes context!.**
+**The most important thing of DevSpace is that DevSpace is cloud agnostic. That means that it depends on your Kubernetes context!.**
 ## Configuration file
 
 Once DevSpace has been explained, let's take a look to our DevSpace configuration file: `devspace.yaml`:
@@ -107,7 +107,7 @@ Let's take a look at this file step by step:
 **1. `deployments`:** here we can specify all the deployment we want to deploy in our Kubernetes cluster. Here you can specify Helm charts with is values, Kubernetes objects or Component Helm Charts. This one are charts made on the fly.
 **1. `dev`:** here we will specify all the configuration that we need for develop our applications. In this example we specify the auto reload of the Docker image when there is a change on the `package.json` and the `Dockerfile` files. Then we specify the sync folder that we want to keep synced between our machine and the Kubernetes Cluster.
 
-One of the cool features that has DevSpace is that if we have any deployment dependencies with toher GIT repos, we can add it down `dependencies` object in the YAML config file like this:
+One of the cool features that has DevSpace is that if we have any deployment dependencies with other GIT repos, we can add it down `dependencies` object in the YAML config file like this:
 
 ```yaml
 dependencies:

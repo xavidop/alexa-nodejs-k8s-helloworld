@@ -45,9 +45,9 @@ The chart of this Alexa Skill would have the following files:
 3. Templates: templates files are stored in this directory.
 4. values.yml: default values used in templates.
 
-Before we start, as our chart will include a MongoDB as a dependenci we will have to add it on our `Chart.yaml` file.
+Before we start, as our chart will include a MongoDB as a dependency we will have to add it on our `Chart.yaml` file.
 
-First we need to add the Helm repositoary where the MongoDB Helm Chart is stored with the following commands:
+First we need to add the Helm repository where the MongoDB Helm Chart is stored with the following commands:
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
@@ -91,7 +91,7 @@ The image below shows what happens when we use Helm and how it transforms our te
 
 ![image](../img/helm/helm.png)
 
-Now we will add the Helm layer to allow our alexa Skill to be scalable, extensible, environment-aware, version-aware, incremental, personalized, dynamic, and reusable. Adding this layer means create templates for all of our Kubernetes objects.
+Now we will add the Helm layer to allow our alexa Skill to be scalable, extensible, environment-aware, version-aware, incremental, personalised, dynamic, and reusable. Adding this layer means create templates for all of our Kubernetes objects.
 
 ### Deployment template
 

@@ -24,7 +24,7 @@ EXPOSE 3000
 ENTRYPOINT ["npm", "start"]
 ```
 
-These aer the steps that the `Dockerfile` will execute when we build it:
+These are the steps that the `Dockerfile` will execute when we build it:
 1. We will use the NodeJS 12.18 version running in a Linux Alpine container.
 2. We will set the working directory of the container to `/usr/src`.
 3. Then we will copy our Alexa Skill as a NodeJS Express Web server.

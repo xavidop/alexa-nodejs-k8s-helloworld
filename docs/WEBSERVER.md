@@ -1,6 +1,6 @@
 # Alexa and Kubernetes: Alexa Skill as a web server
 
-The very first task we have to do to run our Alexa Skill in a kubernetes environment is to tranform our Alexa Skill bakcend into a NodeJS app running in a Express Web server.
+The very first task we have to do to run our Alexa Skill in a kubernetes environment is to transform our Alexa Skill backend into a NodeJS app running in an Express Web server.
 
 You can build a custom skill for Alexa by implementing a web service that accepts requests from and sends responses to the Alexa service in the cloud.
 The web service must meet certain requirements to handle requests sent by Alexa and adhere to the Alexa Skills Kit interface standards. 
@@ -90,7 +90,7 @@ app.listen(3000);
 ```
 
 As you can see above, instead of calling the method `lambda()` and exporting that object, we will call the method `create()` requieres for the Express adapter.
-After that, we will create an instanceof the express. 
+After that, we will create an instance of the express. 
 Then we are going to set up the Express adapter creating a new instance of the `ExpressAdapter` that has 3 parameters:
 1. The Alexa Skill object the we have obtain after calling the `create()` method.
 2. A boolean that enables/disables the verification of the request Signature.
@@ -188,7 +188,7 @@ For example, you can test a `LaunchRequest`:
 
 ## Conclusion 
 
-As you can see with just 4 lines of code we transform an Alexa Skill using AWS Lambda into an Express app thanks to the Amazon Alexa teamn and its fabulous adapter.
+As you can see with just 4 lines of code we transform an Alexa Skill using AWS Lambda into an Express app thanks to the Amazon Alexa team and its fabulous adapter.
 
 I hope this example project is useful to you.
 

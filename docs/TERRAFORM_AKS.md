@@ -1,6 +1,6 @@
 # Alexa and Kubernetes: Deploying the Alexa Skill on Azure Kubernetes Services
 
-Now we have everything prepared and ready to go to a Kubernetes Cluster in a cloud provider. It is a fact that create a cluster in any cloud provider manually ias a hard task. Moreover if we want to automate this deplyoments we need something that help us in this tedious task. In this Markdown we will see how to create a Kubernetes Cluster and all of its required objects and deploying our Alexa Skill with Terraform using [Azure Kubernetes Services](https://azure.microsoft.com/en-us/services/kubernetes-service/)
+Now we have everything prepared and ready to go to a Kubernetes Cluster in a cloud provider. It is a fact that create a cluster in any cloud provider manually is a hard task. Moreover if we want to automate this deployments we need something that help us in this tedious task. In this Markdown we will see how to create a Kubernetes Cluster and all of its required objects and deploying our Alexa Skill with Terraform using [Azure Kubernetes Services](https://azure.microsoft.com/en-us/services/kubernetes-service/)
 
 ![image](../img/aks/azure.png)
 
@@ -27,7 +27,7 @@ Configuration files describe to Terraform the components needed to run a single 
 The infrastructure Terraform can manage includes low-level components such as compute instances, storage, and networking, as well as high-level components such as DNS entries, SaaS features, etc.
 ## Terraform files
 
-After the brief overview of Terraform, we are going to explaing all the terraform files and its objects tat we are going to use to deploy de cluster and our Alexa Skill. 
+After the brief overview of Terraform, we are going to explaining all the terraform files and its objects tat we are going to use to deploy de cluster and our Alexa Skill. 
 You can find all the files related to this deployment in `terraform/aks` folder.
 
 ### Terraform Providers
@@ -111,7 +111,7 @@ resource "helm_release" "ingress" {
 }
 ```
 
-Aftear that, we can proudly deploy our alexa Skill Helm chart in our Kubernetes Cloud cluster:
+After that, we can proudly deploy our alexa Skill Helm chart in our Kubernetes Cloud cluster:
 ```hcl
 resource "helm_release" "alexa-skill" {
   name       = "alexa-skill"

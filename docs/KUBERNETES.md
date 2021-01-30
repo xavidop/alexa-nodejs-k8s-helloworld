@@ -63,14 +63,14 @@ kind delete cluster
 ## Creating the Kubernetes objects
 
 The objects that we are going to create are the following Kubernetes objects in order to run our Alexa Skill ready to run on Kubernetes:
-**1. Deployment:** the deploymnet is one of the most immportants kubernetes objects. A Deployment provides declarative updates for Pods. A Pod (as in a pod of whales or pea pod) is a group of one or more containers, with shared storage and network resources, and a specification for how to run the containers.
+**1. Deployment:** the deploymnet is one of the most important kubernetes objects. A Deployment provides declarative updates for Pods. A Pod (as in a pod of whales or pea pod) is a group of one or more containers, with shared storage and network resources, and a specification for how to run the containers.
 **2. Service:** an abstract way to expose an application running on a set of Pods as a network service
 **3. Ingress:** an API object that manages external access to the services in a cluster. It is a layer crated above the Kubernetes services. It requieres an Ingress Controller to manage all the incoming requests.
 
 Here you can find a simple schema of how Kubernetes works:
 ![image](../img/kubernetes/kube.png)
 
-Our Alexa Skill will be a container running thanks to our Deployment. We will expose the port of the Alexa Skill thanks to the Kubernetes Service object and finally we are going to access to the Alexa Skill through the port exposed thanks to the Kuberntes Ingress object.
+Our Alexa Skill will be a container running thanks to our Deployment. We will expose the port of the Alexa Skill thanks to the Kubernetes Service object and finally we are going to access to the Alexa Skill through the port exposed thanks to the Kubernetes Ingress object.
 ### Deployment
 
 You describe a desired state in a Deployment, and the Deployment Controller changes the actual state to the desired state at a controlled rate. You can define Deployments to create new Pods, or to remove existing Deployments and adopt all their resources with new Deployments.
@@ -132,16 +132,16 @@ As you can see, our Deployment will have 1 replica. In case our alexa Skill have
 
 ![image](../img/kubernetes/autoscaler.svg)
 
-Let'see the specification of our Deployment:
+Let's see the specification of our Deployment:
 1. First thing you will notice is that in the `containers` list we only have one container defined which is our Alexa Skill.
 3. the image build in the previous step is set in the `containers.image` object.
-4. We expose the cointainer port which is the **3000**. As it is a port that will recieve HTTP requests. The protocol we have to set is `tcp`.
+4. We expose the container port which is the **3000**. As it is a port that will recieve HTTP requests. The protocol we have to set is `tcp`.
 5. We have set the memory of our pod to `128Mi`, it means 128 MegaBytes. In terms of CPU we have set it to `50mi`. It is measured in milicores.
-6. In the `env` object we will set all the environment variables and its values that our cointaner will use.
+6. In the `env` object we will set all the environment variables and its values that our cintainer will use.
 
 With that we have our deployment ready. This deployment will create a pod with a container.
 
-Finally we have to modify our NodeJS Alexa Skill app to get all the information from the environment varaibles that we have set in the Deploment spececification:
+Finally we have to modify our NodeJS Alexa Skill app to get all the information from the environment variables that we have set in the Deployment specification:
 
 ```javascript
 const connOpts = {
