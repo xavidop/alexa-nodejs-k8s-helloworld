@@ -12,9 +12,21 @@ module.exports = {
 
       // Test MongoDB connection works
       const { attributesManager } = handlerInput;
-      await attributesManager.getPersistentAttributes();
+      const attrs = await attributesManager.getPersistentAttributes();
+
+      console.log(JSON.stringify(attrs));
 
       const speakOutput = i18n.t('WELCOME_MSG');
+
+      if (attrs.counter){
+        attrs.counter += 1;
+      } else {
+        attrs.counter = 1;
+      }
+
+      attributesManager.setPersistentAttributes(attrs);
+
+      await attributesManager.savePersistentAttributes();
 
       return handlerInput.responseBuilder
         .speak(speakOutput)

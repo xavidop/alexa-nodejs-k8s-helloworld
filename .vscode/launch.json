@@ -5,7 +5,11 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Skill",
-            "program": "${workspaceRoot}/app/index.js"
+            "program": "${workspaceRoot}/app/index.js",
+            "env": {
+                "ENV": "development",
+                "PATH": "$PATH:/opt/homebrew/bin:/usr/local/bin"
+            }
         }
     ]
 }

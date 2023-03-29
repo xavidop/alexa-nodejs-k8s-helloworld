@@ -10,7 +10,7 @@
 const Alexa = require('ask-sdk-core');
 const express = require('express');
 const { ExpressAdapter } = require('ask-sdk-express-adapter');
-let { MongoDBPersistenceAdapter } = require('ask-sdk-mongodb-persistence-adapter');
+let { MongoDBPersistenceAdapter, PartitionKeyGenerators } = require('ask-sdk-mongodb-persistence-adapter');
 
 let { LaunchRequestHandler } = require('./intents/launchRequestHandler');
 let { HelloWorldIntentHandler } = require('./intents/helloWorldIntentHandler');
@@ -23,10 +23,10 @@ let { ErrorHandler } = require('./errors/errorHandler');
 let { LocalisationRequestInterceptor } = require('./interceptors/localisationRequestInterceptor');
 
 const connOpts = {
-  host: process.env.DB_HOST ? process.env.DB_HOST : 'cluster0.qlqga.mongodb.net',
-  user: process.env.DB_USER ? process.env.DB_USER : 'root',
-  port: process.env.DB_PORT ? process.env.DB_PORT : '27017',
-  password: process.env.DB_PASSWORD ? process.env.DB_PASSWORD : 'root',
+  host: process.env.DB_HOST ? process.env.DB_HOST : 'localhost',
+  user: process.env.DB_USER ? process.env.DB_USER : 'my_user',
+  port: process.env.DB_PORT ? process.env.DB_PORT : '27018',
+  password: process.env.DB_PASSWORD ? process.env.DB_PASSWORD : 'my_password',
   database: process.env.DB_DATABASE ? '/' + process.env.DB_DATABASE : '',
 };
 
@@ -39,11 +39,11 @@ if (process.env.DB_TYPE === 'atlas'){
 }
 
 let options = {
-  collectionName: 'alexa',
+  databaseName: 'alexa',
+  collectionName: 'my_skill',
   mongoURI: uri,
   partitionKeyGenerator: (requestEnvelope) => {
-    const userId = Alexa.getUserId(requestEnvelope);
-    return userId.substr(userId.lastIndexOf('.') + 1);
+    return PartitionKeyGenerators.userId(requestEnvelope);
   },
 };
 
